@@ -1,0 +1,28 @@
+# This file implements generic generation rules for TerminALL
+
+LIBNAME := libTerminALL.a
+
+# Path to root directory 
+TerminALL := $(abspath $(dir $(filter %Makedefs, $(MAKEFILE_LIST))))
+
+INCLUDEPATH := $(TerminALL)/lib
+LINKPATH := $(TerminALL)/lib
+
+GDB_DEBUG := 1
+
+CXXFLAGS := -I$(INCLUDEPATH) -std=c++0x
+LDFLAGS := -L$(LINKPATH) -lrt
+
+ifeq ($(GDB_DEBUG), 1)
+CXXFLAGS := $(CXXFLAGS) -g -O0
+endif
+
+%_Test.o: %_Test.cc
+	g++ $(CXXFLAGS) -c $< -o $@
+
+TerminALL.o: TerminALL.cc
+	g++ $(CXXFLAGS) -c $< -o $@
+
+%.o: %.cc
+	g++ $(CXXFLAGS) -c $< -o $@
+	ar rvs $(LIBNAME) $@
