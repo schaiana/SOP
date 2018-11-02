@@ -1,2 +1,5 @@
-# SOP
-Projetos desenvolvidos na disciplina de Sistemas Operacionais (5ª fase), no curso de Engenharia de Telecomunicações - IFSC-SJ.
+Projeto 1: terminal de execução do linux, que recebe um comando e cria um processo no sistema 
+operacional para executá-lo.
+
+
+Projeto 2: resolvendo deadlocks utilizando mutex e semáforos.
